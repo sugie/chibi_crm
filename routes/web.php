@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,18 +13,45 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/users', 'UserController')->name('店員一覧')->middleware('auth');
-Route::get('/roles', 'RoleController')->name('ロール一覧')->middleware('auth');
+Route::get('/test', function () {
+    return 'Hello World';
+});
+Route::get('/test2', function () {
+    return '
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello HTML</title>
+</head>
+<body>
+<h1 style="color: hotpink;">Hello HTML</h1>
+</body>
+</html>
+';
+});
 
-Route::resource('/customers', 'CustomerController')->middleware('auth');
-Route::post('/customers/{customer}/logs', 'CustomerLogController')->middleware('auth');
-Route::get('customer_search', 'CustomerSearchController@index')->middleware('auth');
-Route::post('customer_search', 'CustomerSearchController@search')->middleware('auth');
+Route::get('/test3', function () {
+    return view('hello');
+});
+
+
+Route::get('page_a', function () {
+    return view('page_a');
+});
+Route::get('page_b', function () {
+    return view('page_b');
+});
+
+Route::get('/', [\App\Http\Controllers\TopPageController::class, 'top_page'])->name('top_page');
+
+Route::get('/users', \App\Http\Controllers\UserController::class)->name('社員一覧')->middleware('auth');
+Route::get('/roles', \App\Http\Controllers\RoleController::class)->name('ロール一覧')->middleware('auth');
+Route::resource('/customers',
+    \App\Http\Controllers\CustomerController::class
+)->middleware('auth');

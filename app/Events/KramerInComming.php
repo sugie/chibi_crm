@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Customer;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,8 +13,9 @@ use Illuminate\Queue\SerializesModels;
 class KramerInComming
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
     /**
-     * @var Customer
+     * @var \App\Models\Customer
      */
     public $kramer;
 
@@ -24,7 +24,7 @@ class KramerInComming
      *
      * @return void
      */
-    public function __construct(Customer $kramer)
+    public function __construct(\App\Models\Customer $kramer)
     {
         $this->kramer = $kramer;
     }

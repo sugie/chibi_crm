@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
+                    <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -16,7 +16,8 @@
 
                         <ul>
                             @canany('viewAny', auth()->user())
-                                <li><a href="/users">店員一覧</a></li>
+                                <li><a href="/users">社員一覧
+                                    </a></li>
                             @endcanany
                             <li><a href="/roles">役職一覧</a></li>
                             <li><a href="/customers">顧客一覧</a></li>

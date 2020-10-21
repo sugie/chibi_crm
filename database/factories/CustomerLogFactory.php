@@ -1,14 +1,31 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use App\CustomerLog;
-use Faker\Generator as Faker;
+use App\Models\CustomerLog;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-$factory->define(CustomerLog::class, function (Faker $faker) {
-    return [
-        'customer_id' => mt_rand(1, 30),
-        'user_id' => mt_rand(1, 4),
-        'log' => $faker->sentence(40),
-    ];
-});
+class CustomerLogFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = CustomerLog::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'customer_id' => mt_rand(1, 30),
+            'user_id' => mt_rand(1, 4),
+            'log' => $this->faker->sentence(40),
+        ];
+    }
+}

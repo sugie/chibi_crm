@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">{{ $customer->name }}({{ $customer->id }})</div>
                     <p>店舗：{{ $customer->shop['name'] }}</p>
@@ -15,7 +15,7 @@
                     <p>更新日：{{ $customer->created_at }}</p>
                     <p>登録日日：{{ $customer->updated_at }}</p>
 
-                    @include('errors')
+{{--                    @include('errors')--}}
                 </div>
                 <br/>
                 <div class="card">
@@ -42,3 +42,4 @@
         </div>
     </div>
 @endsection
+

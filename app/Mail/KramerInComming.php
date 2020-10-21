@@ -2,9 +2,7 @@
 
 namespace App\Mail;
 
-use App\Customer;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -12,7 +10,7 @@ class KramerInComming extends Mailable
 {
     use Queueable, SerializesModels;
     /**
-     * @var Customer
+     * @var \App\Models\Customer
      */
     public $kramer;
 
@@ -21,7 +19,7 @@ class KramerInComming extends Mailable
      *
      * @return void
      */
-    public function __construct(Customer $kramer)
+    public function __construct(\App\Models\Customer $kramer)
     {
         $this->kramer = $kramer;
     }

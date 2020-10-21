@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">顧客新規登録</div>
                     <form action="/customers" method="POST">
@@ -20,7 +20,15 @@
                         <p style="text-align: center"><button class="btn btn-primary" type="submit">　　登　録　　</button></p>
                     </form>
 
-                    @include('errors')
+                    {{-- エラーを表示--}}
+                    @if( $errors->any() )
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+
                 </div>
             </div>
         </div>
