@@ -13,6 +13,6 @@ class CustomerLogsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\CustomerLog::factory(120)->create();
+        \App\Models\CustomerLog::factory()->count(120)->create();
     }
 }

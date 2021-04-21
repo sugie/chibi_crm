@@ -13,6 +13,6 @@ class CustomersTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Customer::factory(200)->create();
+        \App\Models\Customer::factory()->count(200)->create();
     }
 }

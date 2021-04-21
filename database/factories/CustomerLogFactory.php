@@ -23,8 +23,8 @@ class CustomerLogFactory extends Factory
     public function definition()
     {
         return [
-            'customer_id' => mt_rand(1, 30),
-            'user_id' => mt_rand(1, 4),
+            'customer_id' => random_int(1, 30),
+            'user_id' => random_int(1, 4),
             'log' => $this->faker->sentence(40),
         ];
     }
